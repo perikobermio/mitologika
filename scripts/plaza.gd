@@ -10,6 +10,15 @@ const CAJA_ABADE := Rect2(-12, -46, 24, 44)
 @onready var _abade: Node2D = $Mundo/Abade
 var _imagenes := {}
 
+func _ready() -> void:
+	# Cada partida, una farola al azar falla (temblor fuerte y apagones cortos).
+	var luces := []
+	for n in $Mundo.get_children():
+		if n.name.begins_with("Farola") and n.has_node("Luz"):
+			luces.append(n.get_node("Luz"))
+	if not luces.is_empty():
+		luces.pick_random().set_inestable(true)
+
 func _process(delta: float) -> void:
 	var caja := Rect2(_abade.global_position + CAJA_ABADE.position, CAJA_ABADE.size)
 	for nodo in get_tree().get_nodes_in_group("ocluye"):
