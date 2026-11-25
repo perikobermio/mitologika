@@ -1,0 +1,13 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="Mitologika"
+run/main_scene="res://scenes/plaza.tscn"
+config/features=PackedStringArray("4.7")
+
+[display]
+window/size/viewport_width=1344
+window/size/viewport_height=756
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
