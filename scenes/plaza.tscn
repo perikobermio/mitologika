@@ -2,17 +2,29 @@
 
 [ext_resource type="Script" path="res://scripts/plaza.gd" id="1_6e41j"]
 [ext_resource type="Texture2D" path="res://assets/scenes/goiko_plaza.jpeg" id="2_meqn0"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n1.png" id="3_7ymeg"]
 [ext_resource type="PackedScene" path="res://scenes/abade.tscn" id="3_kkl5g"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="4_304fd"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n2.png" id="4_erylb"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n3.png" id="5_58ucc"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/quiosco.png" id="6_7xy25"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n7.png" id="6_86hgl"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/carretilla.png" id="7_o5i5r"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n8.png" id="7_vuscr"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n9.png" id="8_3yyjq"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/barril.png" id="8_mjgot"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_n10.png" id="9_faihe"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/barriles3.png" id="9_neip5"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e4.png" id="10_aah3j"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/barriles2.png" id="10_n7dmj"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/carro_toldo.png" id="11_o2fbj"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e5.png" id="11_ph7jc"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e6.png" id="12_ajfse"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/banco.png" id="12_tw0by"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o1.png" id="13_4hsib"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/cajas3b.png" id="13_cs5q7"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/farola.png" id="14_e03me"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o4.png" id="14_r2sbf"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_n6.png" id="15_lqf1e"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_n8.png" id="16_5slae"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_n9.png" id="17_336kd"]
@@ -23,9 +35,34 @@
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_oeste.png" id="22_7ymeg"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_sureste.png" id="23_erylb"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/edif_casas_suroeste.png" id="24_58ucc"]
+[ext_resource type="Script" path="res://scripts/luz_farola.gd" id="26_7fojp"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_c1.png" id="31_34oec"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_c2.png" id="32_845k1"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_a1.png" id="34_cl3c5"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_a8.png" id="35_8v7je"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_a6.png" id="36_086fp"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e3.png" id="39_tfklp"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e1.png" id="40_g0h34"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o3.png" id="42_wdcqw"]
+[ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o2.png" id="43_lrx1q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hv1fp"]
+light_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86hgl"]
 radius = 4.0
+
+[sub_resource type="Gradient" id="grad_luz"]
+offsets = PackedFloat32Array(0, 0.25, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.75, 0.75, 0.75, 1, 0.25, 0.25, 0.25, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="tex_luz"]
+gradient = SubResource("grad_luz")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vuscr"]
 radius = 4.0
@@ -1299,6 +1336,9 @@ size = Vector2(358, 4)
 [node name="Plaza" type="Node2D" unique_id=519497078]
 script = ExtResource("1_6e41j")
 
+[node name="Noche" type="CanvasModulate" parent="." unique_id=841600756]
+color = Color(0.38, 0.42, 0.56, 1)
+
 [node name="Fondo" type="Sprite2D" parent="." unique_id=1311410589]
 texture = ExtResource("2_meqn0")
 centered = false
@@ -1308,6 +1348,92 @@ centered = false
 [node name="Contorno" type="CollisionPolygon2D" parent="Bordes" unique_id=283219180]
 build_mode = 1
 polygon = PackedVector2Array(0, 0, 1344, 0, 1344, 756, 0, 756)
+
+[node name="Ventanas" type="Node2D" parent="." unique_id=1724959929]
+
+[node name="Ventana_n1" type="Sprite2D" parent="Ventanas" unique_id=1539706747]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(599, 153)
+texture = ExtResource("3_7ymeg")
+centered = false
+
+[node name="Ventana_n2" type="Sprite2D" parent="Ventanas" unique_id=1529370168]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(606, 197)
+texture = ExtResource("4_erylb")
+centered = false
+
+[node name="Ventana_n3" type="Sprite2D" parent="Ventanas" unique_id=320693050]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(651, 146)
+texture = ExtResource("5_58ucc")
+centered = false
+
+[node name="Ventana_n7" type="Sprite2D" parent="Ventanas" unique_id=1132167927]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(721, 103)
+texture = ExtResource("6_86hgl")
+centered = false
+
+[node name="Ventana_n8" type="Sprite2D" parent="Ventanas" unique_id=1416262937]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(744, 139)
+texture = ExtResource("7_vuscr")
+centered = false
+
+[node name="Ventana_n9" type="Sprite2D" parent="Ventanas" unique_id=6242543]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(797, 68)
+texture = ExtResource("8_3yyjq")
+centered = false
+
+[node name="Ventana_n10" type="Sprite2D" parent="Ventanas" unique_id=1097960254]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(483, 103)
+texture = ExtResource("9_faihe")
+centered = false
+
+[node name="Ventana_e4" type="Sprite2D" parent="Ventanas" unique_id=1004408569]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(1204, 127)
+texture = ExtResource("10_aah3j")
+centered = false
+
+[node name="Ventana_e5" type="Sprite2D" parent="Ventanas" unique_id=2061851161]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(1282, 185)
+texture = ExtResource("11_ph7jc")
+centered = false
+
+[node name="Ventana_e6" type="Sprite2D" parent="Ventanas" unique_id=179688452]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(1324, 204)
+texture = ExtResource("12_ajfse")
+centered = false
+
+[node name="Ventana_o1" type="Sprite2D" parent="Ventanas" unique_id=177030996]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(77, 363)
+texture = ExtResource("13_4hsib")
+centered = false
+
+[node name="Ventana_o4" type="Sprite2D" parent="Ventanas" unique_id=244161330]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(77, 439)
+texture = ExtResource("14_r2sbf")
+centered = false
 
 [node name="Mundo" type="Node2D" parent="." unique_id=1527530676]
 y_sort_enabled = true
@@ -1556,6 +1682,15 @@ scale = Vector2(1.6666666, 1.6666666)
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_86hgl")
 
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola1" unique_id=522868219]
+position = Vector2(0, -66.7)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.953
+script = ExtResource("26_7fojp")
+
 [node name="Farola2" type="Sprite2D" parent="Mundo" unique_id=1544265914]
 position = Vector2(516.913, 341)
 scale = Vector2(0.6, 0.6)
@@ -1569,6 +1704,15 @@ scale = Vector2(1.6666666, 1.6666666)
 [node name="Forma" type="CollisionShape2D" parent="Mundo/Farola2/Colision" unique_id=1867073699]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_vuscr")
+
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola2" unique_id=1469847906]
+position = Vector2(0, -66.7)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.953
+script = ExtResource("26_7fojp")
 
 [node name="Farola3" type="Sprite2D" parent="Mundo" unique_id=444703731]
 position = Vector2(516, 518)
@@ -1584,6 +1728,15 @@ scale = Vector2(1.4705882, 1.4705882)
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_3yyjq")
 
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola3" unique_id=443613951]
+position = Vector2(0, -58.8)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.723
+script = ExtResource("26_7fojp")
+
 [node name="Farola4" type="Sprite2D" parent="Mundo" unique_id=1238020779]
 position = Vector2(829.9286, 519)
 scale = Vector2(0.68, 0.68)
@@ -1597,6 +1750,15 @@ scale = Vector2(1.4705882, 1.4705882)
 [node name="Forma" type="CollisionShape2D" parent="Mundo/Farola4/Colision" unique_id=356271680]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_faihe")
+
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola4" unique_id=1875603324]
+position = Vector2(0, -58.8)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.723
+script = ExtResource("26_7fojp")
 
 [node name="Farola5" type="Sprite2D" parent="Mundo" unique_id=1736772830]
 position = Vector2(1048, 524)
@@ -1612,6 +1774,15 @@ scale = Vector2(1.5625, 1.5625)
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_aah3j")
 
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola5" unique_id=9520032]
+position = Vector2(0, -62.5)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.831
+script = ExtResource("26_7fojp")
+
 [node name="Farola6" type="Sprite2D" parent="Mundo" unique_id=2058329885]
 position = Vector2(311, 536)
 scale = Vector2(0.64, 0.64)
@@ -1625,6 +1796,15 @@ scale = Vector2(1.5625, 1.5625)
 [node name="Forma" type="CollisionShape2D" parent="Mundo/Farola6/Colision" unique_id=172457356]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_ph7jc")
+
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola6" unique_id=176370491]
+position = Vector2(0, -62.5)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.831
+script = ExtResource("26_7fojp")
 
 [node name="Farola7" type="Sprite2D" parent="Mundo" unique_id=1718758287]
 position = Vector2(671.5, 703)
@@ -1640,6 +1820,15 @@ scale = Vector2(1.5625, 1.5625)
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_ajfse")
 
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola7" unique_id=276333446]
+position = Vector2(0, -62.5)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.831
+script = ExtResource("26_7fojp")
+
 [node name="Farola8" type="Sprite2D" parent="Mundo" unique_id=1610976162]
 position = Vector2(1034, 419)
 scale = Vector2(0.6, 0.6)
@@ -1653,6 +1842,15 @@ scale = Vector2(1.6666666, 1.6666666)
 [node name="Forma" type="CollisionShape2D" parent="Mundo/Farola8/Colision" unique_id=56632098]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_4hsib")
+
+[node name="Luz" type="PointLight2D" parent="Mundo/Farola8" unique_id=342487335]
+position = Vector2(0, -66.7)
+scale = Vector2(1, 0.7)
+color = Color(1, 0.76, 0.45, 1)
+energy = 1.1
+texture = SubResource("tex_luz")
+texture_scale = 1.953
+script = ExtResource("26_7fojp")
 
 [node name="Casas_n6" type="Node2D" parent="Mundo" unique_id=969960410 groups=["ocluye"]]
 y_sort_enabled = true
@@ -2692,6 +2890,13 @@ offset = Vector2(-3, -386)
 region_enabled = true
 region_rect = Rect2(144, 0, 6, 438)
 
+[node name="Ventana_c1" type="Sprite2D" parent="Mundo/Catedral/T144" unique_id=1439410742]
+modulate = Color(0.85, 0.55, 0.75, 0.55)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-11, -109)
+texture = ExtResource("31_34oec")
+centered = false
+
 [node name="T150" type="Sprite2D" parent="Mundo/Catedral" unique_id=2078099581]
 position = Vector2(153, 406)
 texture = ExtResource("18_i4wud")
@@ -2763,6 +2968,13 @@ centered = false
 offset = Vector2(-3, -413)
 region_enabled = true
 region_rect = Rect2(198, 0, 6, 438)
+
+[node name="Ventana_c2" type="Sprite2D" parent="Mundo/Catedral/T198" unique_id=2061997610]
+modulate = Color(0.85, 0.55, 0.75, 0.55)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-1, -102)
+texture = ExtResource("32_845k1")
+centered = false
 
 [node name="T204" type="Sprite2D" parent="Mundo/Catedral" unique_id=1977390885]
 position = Vector2(207, 432)
@@ -3553,6 +3765,13 @@ offset = Vector2(-3, -261)
 region_enabled = true
 region_rect = Rect2(30, 0, 6, 393)
 
+[node name="Ventana_a1" type="Sprite2D" parent="Mundo/Ayuntamiento/T882" unique_id=886067294]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-3, -109)
+texture = ExtResource("34_cl3c5")
+centered = false
+
 [node name="T888" type="Sprite2D" parent="Mundo/Ayuntamiento" unique_id=1496519854]
 position = Vector2(891, 310)
 texture = ExtResource("19_yaabb")
@@ -3873,6 +4092,13 @@ offset = Vector2(-3, -382)
 region_enabled = true
 region_rect = Rect2(270, 0, 6, 393)
 
+[node name="Ventana_a8" type="Sprite2D" parent="Mundo/Ayuntamiento/T1122" unique_id=1917271722]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-12, -66)
+texture = ExtResource("35_8v7je")
+centered = false
+
 [node name="T1128" type="Sprite2D" parent="Mundo/Ayuntamiento" unique_id=1375404651]
 position = Vector2(1131, 431)
 texture = ExtResource("19_yaabb")
@@ -3936,6 +4162,13 @@ centered = false
 offset = Vector2(-3, -381)
 region_enabled = true
 region_rect = Rect2(318, 0, 6, 393)
+
+[node name="Ventana_a6" type="Sprite2D" parent="Mundo/Ayuntamiento/T1170" unique_id=1348970690]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-12, -115)
+texture = ExtResource("36_086fp")
+centered = false
 
 [node name="T1176" type="Sprite2D" parent="Mundo/Ayuntamiento" unique_id=1251973201]
 position = Vector2(1179, 418)
@@ -4535,6 +4768,13 @@ offset = Vector2(-3, -270)
 region_enabled = true
 region_rect = Rect2(24, 0, 6, 299)
 
+[node name="Ventana_e3" type="Sprite2D" parent="Mundo/Casas_e2/T1209" unique_id=1534987256]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-12, -84)
+texture = ExtResource("39_tfklp")
+centered = false
+
 [node name="T1215" type="Sprite2D" parent="Mundo/Casas_e2" unique_id=120029924]
 position = Vector2(1218, 462)
 texture = ExtResource("21_ctaod")
@@ -4558,6 +4798,13 @@ centered = false
 offset = Vector2(-3, -274)
 region_enabled = true
 region_rect = Rect2(42, 0, 6, 299)
+
+[node name="Ventana_e1" type="Sprite2D" parent="Mundo/Casas_e2/T1227" unique_id=2064801573]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-7, -118)
+texture = ExtResource("40_g0h34")
+centered = false
 
 [node name="T1233" type="Sprite2D" parent="Mundo/Casas_e2" unique_id=241050876]
 position = Vector2(1236, 472)
@@ -4924,6 +5171,13 @@ offset = Vector2(-3, -536)
 region_enabled = true
 region_rect = Rect2(60, 0, 6, 565)
 
+[node name="Ventana_o3" type="Sprite2D" parent="Mundo/Casas_oeste/T60" unique_id=1325317393]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-9, -127)
+texture = ExtResource("42_wdcqw")
+centered = false
+
 [node name="T66" type="Sprite2D" parent="Mundo/Casas_oeste" unique_id=1203965989]
 position = Vector2(69, 536)
 texture = ExtResource("22_7ymeg")
@@ -4979,6 +5233,13 @@ centered = false
 offset = Vector2(-3, -517)
 region_enabled = true
 region_rect = Rect2(102, 0, 6, 565)
+
+[node name="Ventana_o2" type="Sprite2D" parent="Mundo/Casas_oeste/T102" unique_id=673147520]
+modulate = Color(1, 1, 1, 0.85)
+material = SubResource("CanvasItemMaterial_hv1fp")
+position = Vector2(-1, -82)
+texture = ExtResource("43_lrx1q")
+centered = false
 
 [node name="T108" type="Sprite2D" parent="Mundo/Casas_oeste" unique_id=1228249861]
 position = Vector2(111, 516)

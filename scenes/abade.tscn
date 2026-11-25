@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1"]
+[ext_resource type="Shader" path="res://shaders/abadea.gdshader" id="2"]
+
+[sub_resource type="ShaderMaterial" id="mat_abadea"]
+shader = ExtResource("2")
+shader_parameter/desaturar = 0.45
+shader_parameter/tinte = Color(0.78, 0.76, 0.8, 1)
 
 [sub_resource type="CircleShape2D" id="pies"]
 radius = 5.0
@@ -14,6 +20,7 @@ color = Color(0, 0, 0, 0.35)
 polygon = PackedVector2Array(-10, 0, -8.7, -2, -5, -3.4, 0, -4, 5, -3.4, 8.7, -2, 10, 0, 8.7, 2, 5, 3.4, 0, 4, -5, 3.4, -8.7, 2)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("mat_abadea")
 scale = Vector2(0.42, 0.42)
 
 [node name="Pies" type="CollisionShape2D" parent="."]
