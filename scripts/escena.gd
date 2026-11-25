@@ -7,6 +7,9 @@ const VELOCIDAD := 6.0
 ## Caja del abade respecto a sus pies (origen).
 const CAJA_ABADE := Rect2(-12, -46, 24, 44)
 
+## Multiplica la opacidad de las sombras que proyectan las luces sobre el abade.
+@export var intensidad_sombras := 1.0
+
 @onready var _abade: Node2D = $Mundo/Abade
 var _imagenes := {}
 

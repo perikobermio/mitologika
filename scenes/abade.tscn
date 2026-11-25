@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1"]
 [ext_resource type="Shader" path="res://shaders/abadea.gdshader" id="2"]
+[ext_resource type="Script" path="res://scripts/sombra_dinamica.gd" id="3"]
 
 [sub_resource type="ShaderMaterial" id="mat_abadea"]
 shader = ExtResource("2")
@@ -18,6 +19,9 @@ script = ExtResource("1")
 [node name="Sombra" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 0.35)
 polygon = PackedVector2Array(-10, 0, -8.7, -2, -5, -3.4, 0, -4, 5, -3.4, 8.7, -2, 10, 0, 8.7, 2, 5, 3.4, 0, 4, -5, 3.4, -8.7, 2)
+
+[node name="Sombras" type="Node2D" parent="."]
+script = ExtResource("3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("mat_abadea")

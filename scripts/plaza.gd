@@ -2,6 +2,10 @@ extends "res://scripts/escena.gd"
 ## Plaza de Goiko: además de lo común, cada partida una farola al azar falla.
 
 
+func _init() -> void:
+	intensidad_sombras = 0.45   # farolas: sombra más tenue que la de las velas
+
+
 func _ready() -> void:
 	super._ready()
 	var luces := []
