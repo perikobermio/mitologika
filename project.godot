@@ -3,7 +3,7 @@ config_version=5
 
 [application]
 config/name="Mitologika"
-run/main_scene="res://scenes/plaza.tscn"
+run/main_scene="res://scenes/santa_eufemia.tscn"
 config/features=PackedStringArray("4.7")
 
 [display]

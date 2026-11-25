@@ -53,6 +53,13 @@ func _physics_process(_delta: float) -> void:
 		_sprite.play("walk_" + DIRS[_dir])
 
 
+## Orienta al abade (0 n ... 7 no) sin moverlo.
+func mirar(dir: int) -> void:
+	_dir = wrapi(dir, 0, 8)
+	if _sprite.sprite_frames:
+		_sprite.play("idle_" + DIRS[_dir])
+
+
 func _dir_de(input: Vector2) -> int:
 	return wrapi(roundi(atan2(input.x, -input.y) / (PI / 4.0)), 0, 8)
 

@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_e1.png" id="40_g0h34"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o3.png" id="42_wdcqw"]
 [ext_resource type="Texture2D" path="res://assets/scenes/plaza/ventanas/ventana_o2.png" id="43_lrx1q"]
+[ext_resource type="Script" path="res://scripts/salida.gd" id="46_erylb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hv1fp"]
 light_mode = 1
@@ -6572,3 +6573,12 @@ shape = SubResource("RectangleShape2D_tjbe4")
 [node name="R32" type="CollisionShape2D" parent="Mundo/Casas_suroeste/Planta" unique_id=857338765]
 position = Vector2(179, 754)
 shape = SubResource("RectangleShape2D_xoojv")
+
+[node name="EntradaIglesia" type="Area2D" parent="." unique_id=163111661]
+script = ExtResource("46_erylb")
+escena = "res://scenes/santa_eufemia.tscn"
+llegada = Vector2(262, 478)
+mirando = 1
+
+[node name="@CollisionPolygon2D@2" type="CollisionPolygon2D" parent="EntradaIglesia" unique_id=1604141992]
+polygon = PackedVector2Array(318, 352, 366, 352, 392, 368, 380, 382, 326, 374)
