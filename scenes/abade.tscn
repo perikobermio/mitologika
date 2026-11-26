@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1"]
 [ext_resource type="Shader" path="res://shaders/abadea.gdshader" id="2"]
@@ -12,15 +12,27 @@ shader_parameter/tinte = Color(0.78, 0.76, 0.8, 1)
 [sub_resource type="CircleShape2D" id="pies"]
 radius = 5.0
 
+[sub_resource type="Gradient" id="Gradient_sombra"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0, 0, 0, 0.65, 0, 0, 0, 0.45, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sombra"]
+gradient = SubResource("Gradient_sombra")
+width = 48
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.0)
+
 [node name="Abade" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1")
 
 [node name="Visual" type="Node2D" parent="."]
 
-[node name="Sombra" type="Polygon2D" parent="Visual"]
-color = Color(0, 0, 0, 0.35)
-polygon = PackedVector2Array(-10, 0, -8.7, -2, -5, -3.4, 0, -4, 5, -3.4, 8.7, -2, 10, 0, 8.7, 2, 5, 3.4, 0, 4, -5, 3.4, -8.7, 2)
+[node name="SombraPies" type="Sprite2D" parent="Visual"]
+texture = SubResource("GradientTexture2D_sombra")
+scale = Vector2(0.7, 0.45)
 
 [node name="Sombras" type="Node2D" parent="Visual"]
 script = ExtResource("3")
