@@ -22,7 +22,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var caja := Rect2(_abade.global_position + CAJA_ABADE.position, CAJA_ABADE.size)
+	var f := 1.0
+	var factor = _abade.get("factor_perspectiva")
+	if factor != null:
+		f = clampf(float(factor), 0.1, 3.0)
+	var caja := Rect2(_abade.global_position + CAJA_ABADE.position * f, CAJA_ABADE.size * f)
 	for nodo in get_tree().get_nodes_in_group("ocluye"):
 		var detras := false
 		if nodo is Sprite2D:

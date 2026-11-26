@@ -1443,6 +1443,7 @@ y_sort_enabled = true
 position = Vector2(676, 640)
 motion_mode = 1
 script = ExtResource("4_304fd")
+usar_perspectiva = true
 
 [node name="Quiosco" type="Sprite2D" parent="Mundo" unique_id=1420803568 groups=["ocluye"]]
 position = Vector2(676, 518)
