@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dweoteamxo7gy" path="res://scripts/escena.gd" id="1_26olj"]
 [ext_resource type="Texture2D" uid="uid://bnxecxocik1cd" path="res://assets/scenes/santa_eufemia.jpg" id="2_15vkx"]
-[ext_resource type="PackedScene" path="res://scenes/abade.tscn" id="3_1xun2"]
 [ext_resource type="Texture2D" uid="uid://me4ts8xtrl1j" path="res://assets/scenes/santa_eufemia/obj_0.png" id="5_rshwa"]
 [ext_resource type="Texture2D" uid="uid://csgnne5kxqd5y" path="res://assets/scenes/santa_eufemia/obj_1.png" id="6_kojit"]
 [ext_resource type="Texture2D" uid="uid://xhow7jnqscsj" path="res://assets/scenes/santa_eufemia/obj_2.png" id="7_p5bi6"]
@@ -90,12 +89,6 @@ color = Color(0.5, 0.5, 0.6, 1)
 
 [node name="Mundo" type="Node2D" parent="." unique_id=117732526]
 y_sort_enabled = true
-
-[node name="Abade" parent="Mundo" unique_id=1452476488 instance=ExtResource("3_1xun2")]
-position = Vector2(262, 478)
-walk_speed = 90.0
-attack_speed = 1.5
-escala_heroe = 1.15
 
 [node name="Obj0" type="Node2D" parent="Mundo" unique_id=2027577005]
 y_sort_enabled = true
