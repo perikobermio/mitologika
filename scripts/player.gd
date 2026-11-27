@@ -12,8 +12,20 @@ const ANIMS := {"idle": true, "walk": true, "attack": false}  # nombre -> en buc
 ## Zona útil de cada frame de 512x512 (el resto es transparente) y punto de los pies.
 const RECORTE := Rect2i(128, 96, 256, 208)
 const PIES := Vector2(256, 264)
+const VELOCIDAD_BASE := 110.0
 
-@export var speed := 110.0
+@export_group("Movimiento")
+## Velocidad de caminar en píxeles por segundo.
+@export var walk_speed := VELOCIDAD_BASE
+
+@export_group("Ataque")
+## Multiplicador de la velocidad de la animación de ataque.
+## 1.0 = normal, 2.0 = el doble de rápido, 0.5 = la mitad.
+@export_range(0.1, 5.0, 0.05) var attack_speed := 1.0
+
+@export_group("Apariencia")
+## Escala visual del héroe (1 = tamaño base).
+@export var escala_heroe := 1.0
 
 @export_group("Perspectiva")
 ## Si está activo, el abade cambia de tamaño según su profundidad en la escena.
@@ -46,7 +58,7 @@ func _ready() -> void:
 	_sprite.animation_finished.connect(func(): _atacando = false)
 	_sprite.play("idle_" + DIRS[_dir])
 	_alto_mundo = _alto_del_mundo()
-	factor_perspectiva = _escala_para(global_position.y) if usar_perspectiva else 1.0
+	factor_perspectiva = (_escala_para(global_position.y) if usar_perspectiva else 1.0) * escala_heroe
 	_visual.scale = Vector2.ONE * factor_perspectiva
 
 
@@ -65,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# Proyección isométrica: el movimiento vertical se ve más corto.
-	velocity = Vector2(input.x, input.y * 0.75).normalized() * speed
+	velocity = Vector2(input.x, input.y * 0.75).normalized() * walk_speed
 	move_and_slide()
 
 	if input == Vector2.ZERO:
@@ -103,7 +115,7 @@ func _leer_movimiento() -> Vector2:
 
 ## Ajusta el tamaño del abade a la profundidad del punto del suelo donde está.
 func _actualizar_perspectiva(delta: float) -> void:
-	var objetivo := _escala_para(global_position.y)
+	var objetivo := (_escala_para(global_position.y) if usar_perspectiva else 1.0) * escala_heroe
 	factor_perspectiva = lerpf(factor_perspectiva, objetivo, 1.0 - exp(-suavizado * delta))
 	_visual.scale = Vector2.ONE * factor_perspectiva
 
@@ -137,7 +149,12 @@ func _build_frames() -> void:
 			var hoja: Image = load(base + ".png").get_image()
 			sf.add_animation(nombre)
 			sf.set_animation_loop(nombre, ANIMS[anim])
-			sf.set_animation_speed(nombre, datos.meta.frameAnimations[0].fps)
+			var fps: float = datos.meta.frameAnimations[0].fps
+			if anim == "attack":
+				fps *= attack_speed
+			elif anim == "walk":
+				fps *= walk_speed / VELOCIDAD_BASE
+			sf.set_animation_speed(nombre, fps)
 			for f in datos.frames:
 				var r := Rect2i(int(f.frame.x), int(f.frame.y), int(f.frame.w), int(f.frame.h))
 				var zona := Rect2i(r.position + RECORTE.position, RECORTE.size)

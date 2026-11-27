@@ -93,6 +93,9 @@ y_sort_enabled = true
 
 [node name="Abade" parent="Mundo" unique_id=1452476488 instance=ExtResource("3_1xun2")]
 position = Vector2(262, 478)
+walk_speed = 90.0
+attack_speed = 1.5
+escala_heroe = 1.15
 
 [node name="Obj0" type="Node2D" parent="Mundo" unique_id=2027577005]
 y_sort_enabled = true
@@ -3690,7 +3693,6 @@ position = Vector2(567.5, 273)
 shape = SubResource("RectangleShape2D_dl7t2")
 
 [node name="Velas" type="Node2D" parent="." unique_id=310190246]
-visible = false
 
 [node name="Vela1" type="PointLight2D" parent="Velas" unique_id=1872787726]
 position = Vector2(594.5, 227.5)
